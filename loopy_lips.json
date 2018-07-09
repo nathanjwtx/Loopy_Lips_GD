@@ -1,0 +1,22 @@
+[{
+"inputs": [
+    "a name",
+    "a thing",
+    "a feeling",
+    "another feeling",
+    "some things"
+],
+"story": 
+    "Once upon a time a %s ate a %s and felt very %s. It was a %s day for all good %s"
+},
+{
+"inputs": [
+    "a name",
+    "a place",
+    "a thing",
+    "another thing",
+    "yet another thing"
+],
+"story": 
+    "Last week %s went to the %s for a %s. Whilst there a %s fell out of the %s!"
+}]
