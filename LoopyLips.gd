@@ -2,14 +2,16 @@ extends Node2D
 
 var player_words = []
 var current_story
+var intro_text
 
 func _ready():
 	reset_textbox()
 	set_random_story()
 	$Background/StoryText.bbcode_enabled = true
-	$Background/StoryText.bbcode_text = ("Welcome to Loopy Lips. \nPlease follow the prompts for a word or phrase."
-		+ "\nCan I have " + current_story.inputs[player_words.size()] + " , please?")
-	
+	var intro = get_from_JSON("other_text.json")
+	intro_text = intro[0]
+	$Background/StoryText.bbcode_text = (intro_text.intro +
+		"\nCan I have " + current_story.inputs[player_words.size()] + " , please?")
 		
 func set_random_story():
 	var stories = get_from_JSON("loopy_lips.JSON")
@@ -21,8 +23,9 @@ func get_from_JSON(filename):
 	file.open(filename, File.READ)
 	var text = file.get_as_text()
 	var data = parse_json(text)
-	return data
 	file.close()
+	return data
+
 	
 func _on_TextBox_text_entered(new_text):
 	player_words.append(new_text)
